@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>heavy — coming soon</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 0.15rem;
+      text-transform: lowercase;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-top: 0.6rem;
+      line-height: 1.6;
+    }
+    .tiny {
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background: none;
+      border: 1.5px solid #fff;
+      color: #fff;
+      cursor: pointer;
+      letter-spacing: 0.1rem;
+    }
+    button:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .tracklist {
+      text-align: left;
+      max-width: 420px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1>heavy</h1>
+    <p class="tiny">the album</p>
+    <p class="tiny">coming soon</p>
+    <button onclick="goTo('warning')">DON'T TAP</button>
+  </section>
+
+  <!-- WARNING -->
+  <section id="warning">
+    <p class="tiny">this wasn’t made to be clicked.</p>
+    <p class="tiny">you’re already here though.</p>
+    <button onclick="goTo('statement')">KEEP GOING</button>
+  </section>
+
+  <!-- STATEMENT -->
+  <section id="statement">
+    <p>
+      heavy is about weight.<br>
+      things i carried quietly.
+    </p>
+    <button onclick="goTo('tracklist')">TRACKLIST</button>
+  </section>
+
+  <!-- TRACKLIST -->
+  <section id="tracklist">
+    <div class="tracklist">
+      <h2>TRACKLIST</h2>
+      <p>01. intro</p>
+      <p>02. fresh start</p>
+      <p>03. confident</p>
+      <p>04. sweet</p>
+      <p>05. bittersweet poetry</p>
+      <p class="tiny">more soon.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section id="footer">
+    <p class="tiny">if you found this early, thank you.</p>
+    <p class="tiny">heavy.</p>
+  </section>
+
+  <script>
+    function goTo(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
