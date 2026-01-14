@@ -3,116 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>heavy</title>
+  <title>heavy — album</title>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      scroll-behavior: smooth;
-    }
-    section {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
+      text-align: center;
     }
-    h1 {
-      font-size: 4rem;
-      letter-spacing: 0.15rem;
-      text-transform: lowercase;
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      padding: 40px 20px;
     }
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.1rem;
-    }
-    p {
-      font-size: 1.1rem;
-      margin-top: 0.6rem;
-      line-height: 1.6;
-    }
-    .tiny {
+
+    .logo {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 20px auto;
+      border: 1px solid rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.9rem;
-      opacity: 0.6;
+      opacity: 0.7;
     }
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      background: none;
-      border: 1.5px solid #fff;
-      color: #fff;
-      cursor: pointer;
-      letter-spacing: 0.1rem;
+
+    h1 {
+      font-size: 3.5rem;
+      letter-spacing: 0.2rem;
+      text-transform: lowercase;
+      margin-bottom: 30px;
     }
-    button:hover {
-      background: rgba(255,255,255,0.08);
-    }
+
     .tracklist {
       text-align: left;
-      max-width: 420px;
-      width: 100%;
+      margin-top: 30px;
+    }
+
+    .track {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .track:hover {
+      opacity: 0.6;
+    }
+
+    .track span {
+      opacity: 0.7;
+      margin-right: 10px;
+    }
+
+    .note {
+      margin-top: 30px;
+      font-size: 0.85rem;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section id="hero">
-    <h1>heavy</h1>
-    <p class="tiny">the album</p>
-    <p class="tiny">coming soon</p>
-    <button onclick="goTo('warning')">scroll down</button>
-  </section>
+<div class="container">
 
-  <!-- WARNING -->
-  <section id="warning">
-    <p class="tiny">warning: this album has lots of deep topics.</p>
-    <p class="tiny">really deep.</p>
-    <button onclick="goTo('statement')">scroll more</button>
-  </section>
+  <!-- ALBUM LOGO -->
+  <div class="logo">
+    album logo
+  </div>
 
-  <!-- STATEMENT -->
-  <section id="statement">
-    <p>
-      heavy is the things i carried in life.<br>
-      and now i get to share it all.
-    </p>
-    <button onclick="goTo('tracklist')">TRACKLIST</button>
-  </section>
+  <!-- ALBUM NAME -->
+  <h1>heavy</h1>
 
   <!-- TRACKLIST -->
-  <section id="tracklist">
-    <div class="tracklist">
-      <h2>TRACKLIST</h2>
-      <p>01. empty</p>
-      <p>02. too much</p>
-      <p>03. cant look away</p>
-      <p>04. i let it hurt</p>
-      <p>05. grew up wrong</p>
-      <p>06. headlines</p>
+  <div class="tracklist">
+
+    <div class="track" onmouseenter="playSnippet('t1')" onmouseleave="stopSnippet('t1')">
+      <span>01.</span> intro
+      <audio id="t1" src="snippets/intro.mp3"></audio>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <section id="footer">
-    <p class="tiny">thank you.</p>
-    <p class="tiny">heavy.</p>
-  </section>
+    <div class="track" onmouseenter="playSnippet('t2')" onmouseleave="stopSnippet('t2')">
+      <span>02.</span> fresh start
+      <audio id="t2" src="snippets/fresh-start.mp3"></audio>
+    </div>
 
-  <script>
-    function goTo(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
+    <div class="track" onmouseenter="playSnippet('t3')" onmouseleave="stopSnippet('t3')">
+      <span>03.</span> confident
+      <audio id="t3" src="snippets/confident.mp3"></audio>
+    </div>
+
+    <div class="track" onmouseenter="playSnippet('t4')" onmouseleave="stopSnippet('t4')">
+      <span>04.</span> sweet
+      <audio id="t4" src="snippets/sweet.mp3"></audio>
+    </div>
+
+    <div class="track" onmouseenter="playSnippet('t5')" onmouseleave="stopSnippet('t5')">
+      <span>05.</span> bittersweet poetry
+      <audio id="t5" src="snippets/bittersweet-poetry.mp3"></audio>
+    </div>
+
+  </div>
+
+  <div class="note">
+    hover to listen • snippets only • album coming soon
+  </div>
+
+</div>
+
+<script>
+  function playSnippet(id) {
+    const audio = document.getElementById(id);
+    audio.currentTime = 0;
+    audio.volume = 0.7;
+    audio.play();
+  }
+
+  function stopSnippet(id) {
+    const audio = document.getElementById(id);
+    audio.pause();
+    audio.currentTime = 0;
+  }
+</script>
 
 </body>
 </html>
