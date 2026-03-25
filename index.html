@@ -9,7 +9,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #000;
+      background: linear-gradient(180deg, #1a0000 0%, #000000 100%);
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       height: 100vh;
@@ -42,7 +42,7 @@
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
-      padding-top: 60px;
+      padding-top: 40px;
       text-align: center;
     }
 
@@ -54,11 +54,18 @@
       padding: 40px 20px;
     }
 
+    .album-cover {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      margin: 0 auto 25px auto;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    }
+
     h1 {
-      font-size: 3rem;
-      margin-bottom: 30px;
-      letter-spacing: 0.2rem;
-      text-transform: lowercase;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 0.15rem;
     }
 
     .track {
@@ -66,15 +73,16 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
       cursor: pointer;
       transition: opacity 0.2s ease;
+      text-transform: none;
     }
 
     .track:hover { opacity: 0.6; }
 
     .section-title {
-      margin-top: 50px;
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-      opacity: 0.6;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      opacity: 0.7;
       letter-spacing: 0.1rem;
     }
 
@@ -83,7 +91,7 @@
       margin: 8px 0;
       color: #fff;
       text-decoration: none;
-      opacity: 0.7;
+      opacity: 0.8;
       transition: opacity 0.2s ease;
     }
 
@@ -97,7 +105,7 @@
     }
 
     .merch-item {
-      background: #111;
+      background: #120000;
       padding: 10px;
       transition: transform 0.2s ease, opacity 0.2s ease;
       cursor: pointer;
@@ -105,7 +113,7 @@
 
     .merch-item:hover {
       transform: scale(1.05);
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     .merch-item img {
@@ -117,66 +125,84 @@
 </head>
 <body>
 
-<div id="openScreen" class="center-screen">(OPEN)</div>
+<div id="openScreen" class="center-screen">(Open)</div>
 
 <div id="siteContent" class="site">
   <div class="container">
+
+    <img src="cover.jpg" alt="Aftershocks Album Cover" class="album-cover">
+
     <h1>Aftershocks: Recast</h1>
 
-    <div class="section-title">snippets</div>
+    <div class="section-title">Snippets</div>
 
     <div class="track" onmouseenter="playSnippet('t1')" onmouseleave="stopSnippet('t1')">
-      01. empty
-      <audio id="t1" src="snippets/empty.mp3"></audio>
+      01. Ghosting Problems
+      <audio id="t1" src="snippets/ghosting problems.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t2')" onmouseleave="stopSnippet('t2')">
-      02. too much
-      <audio id="t2" src="snippets/too much.mp3"></audio>
+      02. loves gone
+      <audio id="t2" src="snippets/loves gone.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t3')" onmouseleave="stopSnippet('t3')">
-      03. cant look away
-      <audio id="t3" src="snippets/cant look away.mp3"></audio>
+      03. PLEASE COME BACK TO ME
+      <audio id="t3" src="snippets/please come back to me.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t4')" onmouseleave="stopSnippet('t4')">
-      04. i let it hurt
-      <audio id="t4" src="snippets/i let it hurt.mp3"></audio>
+      04. CHEATED
+      <audio id="t4" src="snippets/cheated.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t5')" onmouseleave="stopSnippet('t5')">
-      05. grew up wrong
-      <audio id="t5" src="snippets/grew up wrong.mp3"></audio>
+      05. DEEP/HOPE
+      <audio id="t5" src="snippets/deep hope.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      06. headlines
-      <audio id="t6" src="snippets/headlines.mp3"></audio>
+      06. IN LOVE
+      <audio id="t6" src="snippets/in love.mp3"></audio>
     </div>
 
-    <div class="section-title">listen</div>
+    <div class="track" onmouseenter="playSnippet('t7')" onmouseleave="stopSnippet('t7')">
+      07. RECOVER
+      <audio id="t7" src="snippets/recover.mp3"></audio>
+    </div>
+
+    <div class="track" onmouseenter="playSnippet('t8')" onmouseleave="stopSnippet('t8')">
+      08. PERFECT
+      <audio id="t8" src="snippets/perfect.mp3"></audio>
+    </div>
+
+    <div class="track" onmouseenter="playSnippet('t9')" onmouseleave="stopSnippet('t9')">
+      09. FAULT
+      <audio id="t9" src="snippets/fault.mp3"></audio>
+    </div>
+
+    <div class="section-title">Listen</div>
     <div class="links">
       <a href="#">Spotify</a>
       <a href="#">YouTube</a>
       <a href="#">Instagram</a>
     </div>
 
-    <div class="section-title">merch</div>
+    <div class="section-title">Merch</div>
     <div class="merch-grid">
       <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
-        <img src="merch/shirt1.png" alt="shirt">
-        <div>aftershocks tee</div>
+        <img src="merch/shirt1.png" alt="Shirt">
+        <div>Aftershocks Tee</div>
       </div>
 
       <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
-        <img src="merch/hoodie1.png" alt="hoodie">
-        <div>aftershocks hoodie</div>
+        <img src="merch/hoodie1.png" alt="Hoodie">
+        <div>Aftershocks Hoodie</div>
       </div>
 
       <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
-        <img src="merch/cap1.png" alt="cap">
-        <div>aftershocks cap</div>
+        <img src="merch/cap1.png" alt="Cap">
+        <div>Aftershocks Cap</div>
       </div>
     </div>
 
