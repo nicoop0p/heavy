@@ -17,7 +17,7 @@
     }
 
     .center-screen {
-      position: absolute;
+      position: fixed;
       inset: 0;
       display: flex;
       justify-content: center;
@@ -27,17 +27,22 @@
       opacity: 1;
       transition: opacity 1.5s ease;
       cursor: pointer;
+      z-index: 10;
     }
 
-    .hidden { opacity: 0; pointer-events: none; }
+    .center-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .site {
       opacity: 0;
       transition: opacity 1.5s ease;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100%;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding-top: 60px;
       text-align: center;
     }
 
@@ -53,6 +58,7 @@
       font-size: 3rem;
       margin-bottom: 30px;
       letter-spacing: 0.2rem;
+      text-transform: lowercase;
     }
 
     .track {
@@ -64,13 +70,17 @@
 
     .track:hover { opacity: 0.6; }
 
-    .links {
-      margin-top: 40px;
+    .section-title {
+      margin-top: 50px;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      opacity: 0.6;
+      letter-spacing: 0.1rem;
     }
 
     .links a {
       display: block;
-      margin: 10px 0;
+      margin: 8px 0;
       color: #fff;
       text-decoration: none;
       opacity: 0.7;
@@ -78,6 +88,31 @@
     }
 
     .links a:hover { opacity: 1; }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .merch-item {
+      background: #111;
+      padding: 10px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .merch-item:hover {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    .merch-item img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -86,58 +121,65 @@
 
 <div id="siteContent" class="site">
   <div class="container">
-    <h1>Aftershocks: RECAST</h1>
+    <h1>aftershocks</h1>
+
+    <div class="section-title">snippets</div>
 
     <div class="track" onmouseenter="playSnippet('t1')" onmouseleave="stopSnippet('t1')">
-      01. Ghosting Problems
+      01. empty
       <audio id="t1" src="snippets/empty.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t2')" onmouseleave="stopSnippet('t2')">
-      02. loves gone
+      02. too much
       <audio id="t2" src="snippets/too much.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t3')" onmouseleave="stopSnippet('t3')">
-      03. PLEASE COME BACK TO ME
+      03. cant look away
       <audio id="t3" src="snippets/cant look away.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t4')" onmouseleave="stopSnippet('t4')">
-      04. CHEATED
+      04. i let it hurt
       <audio id="t4" src="snippets/i let it hurt.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t5')" onmouseleave="stopSnippet('t5')">
-      05. DEEP/HOPE
+      05. grew up wrong
       <audio id="t5" src="snippets/grew up wrong.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      06. IN LOVE
+      06. headlines
       <audio id="t6" src="snippets/headlines.mp3"></audio>
     </div>
 
-    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      07. RECOVER
-      <audio id="t6" src="snippets/headlines.mp3"></audio>
-    </div>
-
-    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      08. PERFECT
-      <audio id="t6" src="snippets/headlines.mp3"></audio>
-    </div>
-
-    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      08. FAULT
-      <audio id="t6" src="snippets/headlines.mp3"></audio>
-    </div>
-
+    <div class="section-title">listen</div>
     <div class="links">
       <a href="#">Spotify</a>
       <a href="#">YouTube</a>
       <a href="#">Instagram</a>
     </div>
+
+    <div class="section-title">merch</div>
+    <div class="merch-grid">
+      <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
+        <img src="merch/shirt1.png" alt="shirt">
+        <div>aftershocks tee</div>
+      </div>
+
+      <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
+        <img src="merch/hoodie1.png" alt="hoodie">
+        <div>aftershocks hoodie</div>
+      </div>
+
+      <div class="merch-item" onclick="window.open('https://yourname.fourthwall.com', '_blank')">
+        <img src="merch/cap1.png" alt="cap">
+        <div>aftershocks cap</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -146,10 +188,10 @@
   const siteContent = document.getElementById('siteContent');
 
   openScreen.addEventListener('click', () => {
-    openScreen.classList.add('hidden');
+    openScreen.classList.add('fade-out');
     setTimeout(() => {
       siteContent.classList.add('visible');
-    }, 800);
+    }, 1400);
   });
 
   function playSnippet(id) {
