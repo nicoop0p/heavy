@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>heavy</title>
+  <title>Aftershocks</title>
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12,37 +12,47 @@
       background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .center-screen {
+      position: absolute;
+      inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 3rem;
+      letter-spacing: 0.3rem;
+      opacity: 1;
+      transition: opacity 1.5s ease;
+      cursor: pointer;
+    }
+
+    .hidden { opacity: 0; pointer-events: none; }
+
+    .site {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
       text-align: center;
     }
 
+    .site.visible { opacity: 1; }
+
     .container {
-      max-width: 600px;
+      max-width: 700px;
       width: 100%;
       padding: 40px 20px;
     }
-    
-    .logo {
-      display: block;
-      margin: 0 auto 30px auto;
-      max-width: 160px;
-      width: 100%;
-      height: auto;
-    }
 
     h1 {
-      font-size: 3.5rem;
-      letter-spacing: 0.2rem;
-      text-transform: lowercase;
+      font-size: 3rem;
       margin-bottom: 30px;
-    }
-
-    .tracklist {
-      text-align: left;
-      margin-top: 30px;
+      letter-spacing: 0.2rem;
     }
 
     .track {
@@ -52,74 +62,96 @@
       transition: opacity 0.2s ease;
     }
 
-    .track:hover {
-      opacity: 0.6;
+    .track:hover { opacity: 0.6; }
+
+    .links {
+      margin-top: 40px;
     }
 
-    .track span {
+    .links a {
+      display: block;
+      margin: 10px 0;
+      color: #fff;
+      text-decoration: none;
       opacity: 0.7;
-      margin-right: 10px;
+      transition: opacity 0.2s ease;
     }
 
-    .note {
-      margin-top: 30px;
-      font-size: 0.85rem;
-      opacity: 0.5;
-    }
+    .links a:hover { opacity: 1; }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div id="openScreen" class="center-screen">(OPEN)</div>
 
-  <!-- ALBUM LOGO -->
-  <img src="heavy.png" alt="heavy album logo" class="logo">
-
-  <!-- ALBUM NAME -->
-  <h1>heavy</h1>
-
-  <!-- TRACKLIST -->
-  <div class="tracklist">
+<div id="siteContent" class="site">
+  <div class="container">
+    <h1>Aftershocks: RECAST</h1>
 
     <div class="track" onmouseenter="playSnippet('t1')" onmouseleave="stopSnippet('t1')">
-      <span>01.</span> empty
+      01. Ghosting Problems
       <audio id="t1" src="snippets/empty.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t2')" onmouseleave="stopSnippet('t2')">
-      <span>02.</span> too much
+      02. loves gone
       <audio id="t2" src="snippets/too much.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t3')" onmouseleave="stopSnippet('t3')">
-      <span>03.</span> cant look away
+      03. PLEASE COME BACK TO ME
       <audio id="t3" src="snippets/cant look away.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t4')" onmouseleave="stopSnippet('t4')">
-      <span>04.</span> i let it hurt
+      04. CHEATED
       <audio id="t4" src="snippets/i let it hurt.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t5')" onmouseleave="stopSnippet('t5')">
-      <span>05.</span> grew up wrong
+      05. DEEP/HOPE
       <audio id="t5" src="snippets/grew up wrong.mp3"></audio>
     </div>
 
     <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
-      <span>06.</span> headlines
+      06. IN LOVE
       <audio id="t6" src="snippets/headlines.mp3"></audio>
     </div>
 
-  </div>
+    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
+      07. RECOVER
+      <audio id="t6" src="snippets/headlines.mp3"></audio>
+    </div>
 
-  <div class="note">
-    hover to listen • snippets only • album coming soon
-  </div>
+    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
+      08. PERFECT
+      <audio id="t6" src="snippets/headlines.mp3"></audio>
+    </div>
 
+    <div class="track" onmouseenter="playSnippet('t6')" onmouseleave="stopSnippet('t6')">
+      08. FAULT
+      <audio id="t6" src="snippets/headlines.mp3"></audio>
+    </div>
+
+    <div class="links">
+      <a href="#">Spotify</a>
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
 </div>
 
 <script>
+  const openScreen = document.getElementById('openScreen');
+  const siteContent = document.getElementById('siteContent');
+
+  openScreen.addEventListener('click', () => {
+    openScreen.classList.add('hidden');
+    setTimeout(() => {
+      siteContent.classList.add('visible');
+    }, 800);
+  });
+
   function playSnippet(id) {
     const audio = document.getElementById(id);
     audio.currentTime = 0;
